@@ -1,0 +1,42 @@
+name: Lint 
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+
+jobs:
+  lint-infra:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.8.1
+      - name: terraform fmt check
+        working-directory: ecs-infra
+        run: |
+          terraform fmt -check
+
+  lint-python:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.12'
+
+      - uses: astral-sh/ruff-action@v3
+        with:
+          src: "./src"
+          args: "format --check --diff"
+
+     

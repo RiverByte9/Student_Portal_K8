@@ -1,0 +1,4 @@
+bucket  = "akhileshmishrabiz-devops-bootcamp-state"
+key     = "student-portal/dev/tfstate"
+region  = "ap-south-1"
+encrypt = true
