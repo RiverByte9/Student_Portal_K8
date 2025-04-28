@@ -5,7 +5,7 @@
 
 # ecs cluster
 resource "aws_ecs_cluster" "main" {
-  name = "${var.environment}-${var.app_name}-cluster"
+    name = "${var.environment}-${var.app_name}-cluster"
 }
 
 #building template
