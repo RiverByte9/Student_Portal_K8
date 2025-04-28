@@ -1,12 +1,12 @@
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, timezone
-
+import os
 
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-app.config["SQLALCHEMY_DATABASE_URI"] = os.getenvname("DB_LINK")
+app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DB_LINK")
 
 # Initialize SQLAlchemy with app context
 db = SQLAlchemy()
